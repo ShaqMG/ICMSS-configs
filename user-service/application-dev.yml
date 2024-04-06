@@ -1,9 +1,9 @@
 _BOOTSTRAP_SERVER: "http://127.0.0.1:9092"
 _CLIENT_ID: "user-service"
 _CLIENT_SECRET: Rle6yJmeQ047gIJfxLDIMwDbto6ymUgI
-_DATASOURCE_PASSWORD: "password"
+_DATASOURCE_PASSWORD: "postgres"
 _DATASOURCE_URL: "jdbc:postgresql://localhost:5432/users"
-_DATASOURCE_USERNAME: "keycloak"
+_DATASOURCE_USERNAME: "postgres"
 _HOSTNAME: "localhost"
 _ISSUER_URI: "http://localhost:8080/realms/ICMSS"
 _JWK_SET_URI: http://localhost:8080/realms/ICMSS/protocol/openid-connect/certs
