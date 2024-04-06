@@ -13,7 +13,7 @@ spring:
   profiles:
     active: ${PROFILE}
   application:
-    name: gateway-api
+    name: gateway
   config:
     import: optional:configserver:${CONFIG_URI}
   cloud:
