@@ -11,7 +11,7 @@ eureka:
 
 spring:
   profiles:
-    active: ${PROFILE}
+    active: dev
   application:
     name: gateway
   config:
