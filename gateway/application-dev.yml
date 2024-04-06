@@ -1,0 +1,2 @@
+_OPENAPI_URL: http://localhost:9002/
+_SERVICE_URL_DEFAULT_ZONE: http://localhost:9000/eureka
