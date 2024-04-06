@@ -2,7 +2,7 @@ _BOOTSTRAP_SERVER: "http://127.0.0.1:9092"
 _CLIENT_ID: "user-service"
 _CLIENT_SECRET: Rle6yJmeQ047gIJfxLDIMwDbto6ymUgI
 _DATASOURCE_PASSWORD: "postgres"
-_DATASOURCE_URL: "jdbc:postgresql://postgres:5432/users"
+_DATASOURCE_URL: "jdbc:postgresql://localhost:5432/users"
 _DATASOURCE_USERNAME: "postgres"
 _HOSTNAME: "localhost"
 _ISSUER_URI: "http://localhost:8080/realms/ICMSS"
