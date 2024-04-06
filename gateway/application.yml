@@ -1,63 +1,30 @@
 server:
   port: 9002
 
-eureka:
-  instance:
-    preferIpAddress: true
-  client:
-    registerWithEureka: true
-    serviceUrl:
-      defaultZone: ${SERVICE_URL_DEFAULT_ZONE}
-
 spring:
-  profiles:
-    active: dev
-  application:
-    name: gateway
-  config:
-    import: optional:configserver:${CONFIG_URI}
   cloud:
-    discovery:
-      enabled: true
     gateway:
-      discovery:
-        locator:
-          enabled: true
-          lower-case-service-id: true
       routes:
-        - id: openapi
-          uri: ${OPENAPI_URL}
+        - id: user-service
+          uri: lb://user-service
           predicates:
-            - Path=/v3/api-docs/**
-          filters:
-            - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs
+            - Path=/users/**
+        - id: car-service
+          uri: lb://car-service
+          predicates:
+            - Path=/cars/**
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+            - Path=/orders/**
 
-        - id: user-microservice
-          uri: lb://user-microservice
-          predicates:
-            - Path=/user/**
-          filters:
-            - RewritePath=user/(?<path>.*), /$\{path}
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9000/eureka
 
-        - id: car-microservice
-          uri: lb://ride-microservice
-          predicates:
-            - Path=/ride/**
-          filters:
-            - RewritePath=ride/(?<path>.*), /$\{path}
-        - id: order-microservice
-          uri: lb://chat-microservice
-          predicates:
-            - Path=/chat/**
-          filters:
-            - RewritePath=chat/(?<path>.*), /$\{path}
-
-springdoc:
-  swagger-ui:
-    urls:
-      - name: user
-        url: /user/v3/api-docs
-      - name: ride
-        url: /car/v3/api-docs
-      - name: chat
-        url: /order/v3/api-docs
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, routes
