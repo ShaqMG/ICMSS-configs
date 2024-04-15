@@ -1,0 +1,35 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${DATASOURCE_URL}
+    username: ${DATASOURCE_USERNAME}
+    password: ${DATASOURCE_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database: postgresql
+    generate-ddl: true
+
+  elasticsearch:
+    uris: ${ELASTICSEARCH_URIS}
+
+server:
+  port: 9006
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: always
+
+eureka:
+  client:
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: ${SERVICE_URL_DEFAULT_ZONE}
+  instance:
+    preferIpAddress: true
